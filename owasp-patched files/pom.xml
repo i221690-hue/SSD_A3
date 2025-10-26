@@ -7,11 +7,14 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>owasp-api-vuln-lab</name>
   <description>Intentionally vulnerable Spring Boot API lab (OWASP API Top 10) with JWT</description>
-  <properties>
-    <java.version>17</java.version>
-    <spring.boot.version>3.3.4</spring.boot.version>
-    <jjwt.version>0.11.5</jjwt.version>
-  </properties>
+ <properties>
+  <java.version>17</java.version>
+  <!-- Ensure maven compiler uses Java 17 -->
+  <maven.compiler.release>17</maven.compiler.release>
+  <maven.compiler.source>17</maven.compiler.source>
+  <maven.compiler.target>17</maven.compiler.target>
+</properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
