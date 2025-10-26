@@ -1,5 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>tech.cydea</groupId>
+  <artifactId>owasp-api-vuln-lab</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>owasp-api-vuln-lab</name>
+  <description>Intentionally vulnerable Spring Boot API lab (OWASP API Top 10) with JWT</description>
+
+  <!-- Use Spring Boot parent to import dependency management (BOM) -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.3.4</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <java.version>17</java.version>
+    <!-- JJW T library version used by this project -->
+    <jjwt.version>0.11.5</jjwt.version>
+
+    <!-- ensure compiler matches Java 17 -->
+    <maven.compiler.release>17</maven.compiler.release>
+  </properties>
+
+  <!-- rest of your pom (dependencies / build) continues here -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>tech.cydea</groupId>
