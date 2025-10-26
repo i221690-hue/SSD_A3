@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Show repo tree
+      - name: Show repo tree (debug)
         run: |
           pwd
           ls -la
@@ -23,9 +23,11 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
+        working-directory: "owasp-patched files"
         run: mvn -U -B package --file pom.xml
 
       - name: Run tests
+        working-directory: "owasp-patched files"
         env:
           JWT_SECRET: test-secret-test-secret-test-secret
           JWT_ISSUER: owasp-lab
