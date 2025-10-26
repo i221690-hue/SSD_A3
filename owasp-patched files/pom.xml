@@ -1,84 +1,65 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>tech.cydea</groupId>
-  <artifactId>owasp-api-vuln-lab</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>owasp-api-vuln-lab</name>
-  <description>Intentionally vulnerable Spring Boot API lab (OWASP API Top 10) with JWT</description>
-
-  <!-- Use Spring Boot parent to import dependency management (BOM) -->
+  <!-- Use the Spring Boot parent to manage versions -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.3.4</version>
+    <version>3.2.7</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
-  <properties>
-    <java.version>17</java.version>
-    <!-- JJW T library version used by this project -->
-    <jjwt.version>0.11.5</jjwt.version>
-
-    <!-- ensure compiler matches Java 17 -->
-    <maven.compiler.release>17</maven.compiler.release>
-  </properties>
-
-  <!-- rest of your pom (dependencies / build) continues here -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
   <groupId>tech.cydea</groupId>
   <artifactId>owasp-api-vuln-lab</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>owasp-api-vuln-lab</name>
   <description>Intentionally vulnerable Spring Boot API lab (OWASP API Top 10) with JWT</description>
- <properties>
-  <java.version>17</java.version>
-  <!-- Ensure maven compiler uses Java 17 -->
-  <maven.compiler.release>17</maven.compiler.release>
-  <maven.compiler.source>17</maven.compiler.source>
-  <maven.compiler.target>17</maven.compiler.target>
-</properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring.boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <properties>
+    <java.version>17</java.version>
+
+    <!-- Third-party versions -->
+    <jjwt.version>0.11.5</jjwt.version>
+    <lombok.version>1.18.26</lombok.version>
+
+    <!-- Ensure maven compiler uses Java 17 -->
+    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
   <dependencies>
+    <!-- Spring Boot starters: versions are managed by the parent -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
+
+    <!-- H2 is managed by Spring Boot parent, no version required -->
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <scope>runtime</scope>
     </dependency>
+
+    <!-- JJWT -->
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt-api</artifactId>
@@ -96,29 +77,38 @@
       <version>${jjwt.version}</version>
       <scope>runtime</scope>
     </dependency>
+
+    <!-- Lombok (explicit version) -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
       <optional>true</optional>
     </dependency>
+
+    <!-- Test starter managed by Spring Boot parent -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-  
+
+    <!-- Bucket4j -->
     <dependency>
-  <groupId>com.bucket4j</groupId>
-  <artifactId>bucket4j-core</artifactId>
-  <version>8.10.1</version>
-</dependency>
-           
-    </dependencies>
+      <groupId>com.bucket4j</groupId>
+      <artifactId>bucket4j-core</artifactId>
+      <version>8.10.1</version>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
+      <!-- explicit plugin version is optional since spring-boot-parent manages it,
+           but it's OK to set it explicitly -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>3.2.7</version>
       </plugin>
     </plugins>
   </build>
