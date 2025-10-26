@@ -1,0 +1,6 @@
+- name: Show repo tree
+  run: |
+    pwd
+    ls -la
+    echo "find results:"
+    find . -maxdepth 3 -name pom.xml -print || true
